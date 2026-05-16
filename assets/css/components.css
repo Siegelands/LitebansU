@@ -86,7 +86,7 @@
 
 .btn-primary:hover {
     background: linear-gradient(135deg, var(--primary-hover), var(--primary-dark));
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(45, 122, 122, 0.35);
 }
 
 .btn-secondary {
@@ -134,7 +134,7 @@
 .btn-outline-primary:hover {
     background: var(--primary);
     color: white;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    box-shadow: 0 4px 12px rgba(45, 122, 122, 0.35);
 }
 
 .btn-outline-secondary {
@@ -192,7 +192,7 @@
     color: var(--text-primary);
     background-color: var(--input-bg);
     border-color: var(--input-focus);
-    box-shadow: 0 0 0 0.2rem rgba(99, 102, 241, 0.25);
+    box-shadow: 0 0 0 0.2rem rgba(45, 122, 122, 0.25);
 }
 
 .form-control::placeholder {
@@ -434,9 +434,9 @@
 }
 
 .alert-primary {
-    color: #2563eb;
-    background-color: rgba(99, 102, 241, 0.1);
-    border-color: rgba(99, 102, 241, 0.3);
+    color: #2d7a7a;
+    background-color: rgba(45, 122, 122, 0.1);
+    border-color: rgba(45, 122, 122, 0.3);
 }
 
 .alert-success {

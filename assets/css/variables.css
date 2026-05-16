@@ -14,21 +14,21 @@
  * ============================================================================
  */
 :root {
-    /* Modern Color Palette */
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --primary-light: #818cf8;
-    --primary-dark: #4338ca;
-    --secondary: #8b5cf6;
-    --secondary-hover: #7c3aed;
+    /* Siegelands Color Palette */
+    --primary: #2d7a7a;
+    --primary-hover: #3a9a9a;
+    --primary-light: #4db3b3;
+    --primary-dark: #1a5f5f;
+    --secondary: #e07c00;
+    --secondary-hover: #f59000;
     --success: #10b981;
     --success-hover: #059669;
-    --danger: #ef4444;
-    --danger-hover: #dc2626;
-    --warning: #f59e0b;
-    --warning-hover: #d97706;
-    --info: #06b6d4;
-    --info-hover: #0891b2;
+    --danger: #cc2222;
+    --danger-hover: #e03333;
+    --warning: #e07c00;
+    --warning-hover: #f59000;
+    --info: #6ab4f5;
+    --info-hover: #4da0e8;
     
     /* Neutral Scale */
     --gray-50: #f9fafb;
@@ -44,7 +44,7 @@
     --gray-950: #030712;
     
     /* Typography */
-    --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
     --font-mono: 'Fira Code', 'JetBrains Mono', Consolas, monospace;
     
     /* Spacing */
