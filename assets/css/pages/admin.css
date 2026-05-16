@@ -130,7 +130,7 @@
 }
 
 .admin-stat-card.bg-secondary {
-    background: linear-gradient(135deg, var(--secondary), var(--secondary-hover));
+    background: linear-gradient(135deg, #4b5563, #374151);
 }
 
 .admin-stat-card.bg-success {
