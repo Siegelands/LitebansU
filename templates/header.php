@@ -237,10 +237,9 @@
     <nav class="navbar navbar-expand-lg navbar-modern" id="mainNavbar">
         <div class="container">
             <a class="navbar-brand" href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>">
-                <div class="navbar-brand-icon">
-                    <i class="fas fa-hammer"></i>
-                </div>
-                <span><?= htmlspecialchars($config['site_name'] ?? 'LiteBans', ENT_QUOTES, 'UTF-8') ?></span>
+                <img src="https://siegelands.org/assets/images/wordmark.png" 
+                     alt="<?= htmlspecialchars($config['site_name'] ?? 'SiegeLands', ENT_QUOTES, 'UTF-8') ?>"
+                     class="navbar-wordmark">
             </a>
             
             <!-- Mobile Menu Toggle -->
@@ -298,14 +297,6 @@
                         <a class="nav-link <?= ($currentPage ?? '') === 'stats' ? 'active' : '' ?>" href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>">
                             <i class="fas fa-chart-bar"></i>
                             <span><?= htmlspecialchars($lang->get('nav.statistics'), ENT_QUOTES, 'UTF-8') ?></span>
-                        </a>
-                    </li>
-                    <?php endif; ?>
-                    <?php if ($config['show_menu_protest'] ?? true): ?>
-                    <li class="nav-item">
-                        <a class="nav-link <?= ($currentPage ?? '') === 'protest' ? 'active' : '' ?>" href="<?= htmlspecialchars(url('protest'), ENT_QUOTES, 'UTF-8') ?>">
-                            <i class="fas fa-gavel"></i>
-                            <span><?= htmlspecialchars($lang->get('nav.protest'), ENT_QUOTES, 'UTF-8') ?></span>
                         </a>
                     </li>
                     <?php endif; ?>
