@@ -217,7 +217,7 @@
                             <div class="rank-number"><?= $rank++ ?></div>
                             <div class="staff-details">
                                 <i class="fas fa-user-shield text-primary"></i>
-                                <span class="fw-bold"><?= htmlspecialchars($staff['staff_name'], ENT_QUOTES, 'UTF-8') ?></span>
+                                <span class="fw-bold"><?= htmlspecialchars(SecurityManager::preventXss($staff['staff_name']), ENT_QUOTES, 'UTF-8') ?></span>
                             </div>
                             <div class="punishment-breakdown">
                                 <span class="badge bg-primary"><?= $staff['total_punishments'] ?> total</span>
