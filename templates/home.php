@@ -5,8 +5,8 @@
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#1a2133_0%,#090d16_44%,#02040a_100%)] -z-10"></div>
     
     <div class="max-w-4xl mx-auto text-center" data-animate>
-        <div class="mb-10 inline-flex rounded-[2rem] border border-white/10 bg-white/[0.06] px-8 py-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-28 w-auto max-w-[560px] object-contain sm:h-32">
+        <div class="mb-12 flex justify-center">
+            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-36 w-auto max-w-[760px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,0.35)] sm:h-44 lg:h-52">
         </div>
         
         <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
