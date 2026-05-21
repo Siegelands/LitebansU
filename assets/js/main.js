@@ -933,17 +933,35 @@ console.log('LiteBans Modern JavaScript loaded successfully');
     setupClearCache() {
         const clearCacheBtn = document.getElementById('clear-cache-btn');
         const confirmBtn = document.getElementById('confirm-clear-cache');
+        const modal = document.getElementById('cacheModal');
         
-        if (!clearCacheBtn || !confirmBtn) return;
+        if (!clearCacheBtn || !confirmBtn || !modal) return;
+
+        const showModal = () => {
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        };
+
+        const hideModal = () => {
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
         
         clearCacheBtn.addEventListener('click', () => {
-            const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('cacheModal'));
-            modal.show();
+            showModal();
+        });
+
+        modal.querySelectorAll('[data-modal-close]').forEach((button) => {
+            button.addEventListener('click', hideModal);
+        });
+
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                hideModal();
+            }
         });
         
         confirmBtn.addEventListener('click', async () => {
-            const modal = bootstrap.Modal.getInstance(document.getElementById('cacheModal'));
-            
             try {
                 const formData = new FormData();
                 formData.append('csrf_token', this.csrfToken);
@@ -956,7 +974,7 @@ console.log('LiteBans Modern JavaScript loaded successfully');
                 const data = await response.json();
                 
                 if (data.success) {
-                    modal.hide();
+                    hideModal();
                     this.showNotification('success', data.message || 'Cache cleared successfully');
                     setTimeout(() => location.reload(), 2000);
                 } else {
@@ -965,12 +983,16 @@ console.log('LiteBans Modern JavaScript loaded successfully');
             } catch (error) {
                 console.error('Cache clear error:', error);
                 this.showNotification('danger', error.message);
-                modal.hide();
+                hideModal();
             }
         });
     }
 
     setupModals() {
+        if (typeof bootstrap === 'undefined' || !bootstrap.Modal) {
+            return;
+        }
+
         // Handle all modal close buttons
         document.querySelectorAll('.modal .btn-close, [data-bs-dismiss="modal"]').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -1030,6 +1052,10 @@ console.log('LiteBans Modern JavaScript loaded successfully');
     }
 
     initializeBootstrapComponents() {
+        if (typeof bootstrap === 'undefined') {
+            return;
+        }
+
         // Initialize all Bootstrap tooltips
         const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
         tooltipTriggerList.map(function (tooltipTriggerEl) {

@@ -13,10 +13,15 @@ return [
         'mutes' => 'Mutes',
         'warnings' => 'Warnings',
         'kicks' => 'Kicks',
+        'punishments' => 'Punishments',
         'statistics' => 'Statistics',
         'language' => 'Language',
         'theme' => 'Theme',
         'admin' => 'Admin',
+        'login' => 'Sign In',
+        'logout' => 'Sign Out',
+        'menu' => 'Menu',
+        'admin_panel' => 'Admin Panel',
         'protest' => 'Ban Protest',
     ],
     
@@ -26,6 +31,7 @@ return [
         'recent_activity' => 'Recent Activity',
         'recent_bans' => 'Recent Bans',
         'recent_mutes' => 'Recent Mutes',
+        'latest_punishments' => 'Latest punishments and violations',
         'no_recent_bans' => 'No recent bans found',
         'no_recent_mutes' => 'No recent mutes found',
         'view_all_bans' => 'View All Bans',
@@ -44,12 +50,15 @@ return [
     
     'stats' => [
         'title' => 'Server Statistics',
+        'overview' => 'Real-time statistics and activity',
+        'active' => 'Active',
         'active_bans' => 'Active Bans',
         'active_mutes' => 'Active Mutes',
         'total_warnings' => 'Total Warnings',
         'total_kicks' => 'Total Kicks',
         'total_of' => 'of',
         'all_time' => 'all time',
+        'view_detailed' => 'View Detailed Statistics',
         'most_banned_players' => 'Most Banned Players',
         'most_active_staff' => 'Most Active Staff',
         'top_ban_reasons' => 'Top Ban Reasons',
@@ -123,6 +132,11 @@ return [
     ],
     
     'footer' => [
+        'navigation' => 'Navigation',
+        'legal' => 'Legal',
+        'privacy' => 'Privacy Policy',
+        'terms' => 'Terms of Service',
+        'copyright' => 'All rights reserved.',
         'rights' => 'All rights reserved.',
         'powered_by' => 'Powered by',
         'license' => 'Licensed under'
