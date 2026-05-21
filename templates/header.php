@@ -94,10 +94,6 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
     
-    <!-- GSAP for animations -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
     <!-- Modern CSS -->
     <link href="<?= htmlspecialchars(asset('assets/css/modern.css'), ENT_QUOTES, 'UTF-8') ?>" rel="stylesheet">
     
@@ -277,7 +273,7 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-8 w-auto max-w-[170px] object-contain">
+                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-10 w-auto max-w-[220px] object-contain">
                         </a>
                     </div>
                     

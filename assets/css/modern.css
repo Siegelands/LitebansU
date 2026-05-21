@@ -81,14 +81,13 @@ section.py-24 {
     border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: 1.5rem;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(10px);
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
 
 .card:hover {
     border-color: rgba(229, 231, 235, 0.8);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
     transform: translateY(-2px);
 }
 
@@ -212,14 +211,13 @@ section.py-24 {
     border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: 1.5rem;
     padding: 2rem;
-    backdrop-filter: blur(20px);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(8px);
+    transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     text-align: center;
 }
 
 .stat-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
     border-color: rgba(229, 231, 235, 0.8);
 }
 
@@ -604,7 +602,8 @@ body.siegelands-dark .bg-white\/80,
 body.siegelands-dark .bg-white\/85 {
     background: rgba(15, 23, 42, 0.72) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32) !important;
+    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24) !important;
+    backdrop-filter: blur(8px) !important;
 }
 
 body.siegelands-dark .bg-gray-50,
@@ -711,4 +710,37 @@ body.siegelands-dark .shadow-gray-950\/20 {
 
 body.siegelands-dark footer {
     margin-top: 0;
+}
+
+body.siegelands-dark .backdrop-blur,
+body.siegelands-dark .backdrop-blur-sm,
+body.siegelands-dark .backdrop-blur-md,
+body.siegelands-dark .backdrop-blur-xl,
+body.siegelands-dark .backdrop-blur-2xl {
+    backdrop-filter: blur(6px) !important;
+}
+
+body.siegelands-dark .shadow-2xl,
+body.siegelands-dark .shadow-xl {
+    --tw-shadow: 0 14px 34px rgba(0, 0, 0, 0.25) !important;
+    --tw-shadow-colored: 0 14px 34px var(--tw-shadow-color) !important;
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.32s ease, transform 0.32s ease;
+}
+
+.reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+    }
 }

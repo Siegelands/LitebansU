@@ -65,11 +65,11 @@ $statusFor = function (array $punishment) use ($type, $lang): array {
                 </div>
 
                 <div class="space-y-3">
-                    <?php foreach ($punishments as $punishment): $status = $statusFor($punishment); ?>
+                    <?php foreach ($punishments as $punishment): $status = $statusFor($punishment); $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($punishment['name']); ?>
                     <article class="group rounded-[1.75rem] border border-gray-200/70 bg-white/85 p-5 shadow-sm shadow-gray-950/5 backdrop-blur transition hover:-translate-y-0.5 hover:shadow-xl hover:shadow-gray-950/10" data-animate>
                         <div class="grid gap-5 lg:grid-cols-[1.4fr_90px_130px_1.2fr_130px_150px_130px_90px] lg:items-center">
                             <div class="flex min-w-0 items-center gap-4">
-                                <img src="<?= htmlspecialchars($punishment['avatar'], ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($punishment['name'], ENT_QUOTES, 'UTF-8') ?>" class="h-12 w-12 rounded-2xl object-cover ring-1 ring-gray-200">
+                                <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($punishment['name'], ENT_QUOTES, 'UTF-8') ?>" class="h-14 w-14 rounded-2xl object-contain">
                                 <div class="min-w-0">
                                     <div class="truncate font-bold text-gray-950"><?= htmlspecialchars($punishment['name'], ENT_QUOTES, 'UTF-8') ?></div>
                                     <?php if ($controller->shouldShowUuid()): ?>

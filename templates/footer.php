@@ -86,40 +86,6 @@
             }
         });
         
-        // Sticky navbar scroll behavior
-        let lastScrollTop = 0;
-        const navbar = document.getElementById('navbar');
-        
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > 100) {
-                navbar.classList.add('shadow-luxury');
-            } else {
-                navbar.classList.remove('shadow-luxury');
-            }
-            
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-        });
-        
-        // Smooth scroll animations
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Animate elements on scroll
-        document.querySelectorAll('[data-animate]').forEach((el) => {
-            gsap.to(el, {
-                scrollTrigger: {
-                    trigger: el,
-                    start: 'top 80%',
-                    onEnter: () => {
-                        el.classList.remove('opacity-0', 'translate-y-10');
-                        el.classList.add('opacity-100', 'translate-y-0');
-                    }
-                },
-                duration: 0.8,
-                ease: 'power2.out'
-            });
-        });
     </script>
 </body>
 </html>
