@@ -1,6 +1,8 @@
 <?php
 $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     && (time() - ($_SESSION['admin_login_time'] ?? 0) <= 7200);
+$requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+$isAdminPage = ($currentPage ?? '') === 'admin' || str_contains($requestPath, '/admin');
 ?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($config['site_lang'] ?? $lang->getCurrentLanguage(), ENT_QUOTES, 'UTF-8') ?>">
@@ -96,6 +98,10 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     
     <!-- Modern CSS -->
     <link href="<?= htmlspecialchars(asset('assets/css/modern.css'), ENT_QUOTES, 'UTF-8') ?>" rel="stylesheet">
+    <?php if ($isAdminPage): ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= htmlspecialchars(asset('assets/css/main.css'), ENT_QUOTES, 'UTF-8') ?>" rel="stylesheet">
+    <?php endif; ?>
     
     <!-- PWA Meta Tags -->
     <meta name="theme-color" content="#05070d">
@@ -264,7 +270,7 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     </script>
     <?php endif; ?>
 </head>
-<body class="siegelands-dark bg-[#05070d] text-slate-100 font-display antialiased">
+<body class="<?= $isAdminPage ? 'admin-shell bg-slate-100 text-slate-950' : 'siegelands-dark bg-[#05070d] text-slate-100' ?> font-display antialiased">
     <!-- Sticky Navigation Bar with Glassmorphism -->
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
         <div class="backdrop-blur-xl bg-[#05070d]/75 border-b border-white/10 shadow-2xl shadow-black/20">
@@ -273,7 +279,7 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-10 w-auto max-w-[220px] object-contain">
+                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-12 w-auto max-w-[280px] object-contain">
                         </a>
                     </div>
                     

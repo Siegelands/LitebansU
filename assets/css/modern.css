@@ -738,6 +738,148 @@ body.siegelands-dark .shadow-xl {
     transform: translateY(0);
 }
 
+body.admin-shell {
+    background: #f5f7fb;
+    color: #111827;
+}
+
+body.admin-shell main {
+    background: #f5f7fb;
+    min-height: calc(100vh - 4rem);
+}
+
+body.admin-shell .admin-dashboard,
+body.admin-shell .admin-login {
+    width: min(100% - 2rem, 1280px);
+    margin: 0 auto;
+    padding: 3rem 0;
+}
+
+body.admin-shell .admin-login {
+    min-height: calc(100vh - 12rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.admin-shell .admin-login .container {
+    width: 100%;
+}
+
+body.admin-shell .login-card {
+    width: min(100%, 520px);
+    max-width: 520px;
+    margin: 0 auto;
+    border: 1px solid #e5e7eb;
+    border-radius: 1.5rem;
+    background: #ffffff;
+    box-shadow: 0 24px 70px rgba(15, 23, 42, 0.12);
+}
+
+body.admin-shell .login-card .card-body {
+    padding: 2.5rem;
+}
+
+body.admin-shell .login-icon {
+    margin-bottom: 1.25rem;
+}
+
+body.admin-shell .login-card h3 {
+    margin-bottom: 0.75rem;
+    color: #111827;
+}
+
+body.admin-shell .login-card .text-muted {
+    color: #6b7280 !important;
+}
+
+body.admin-shell .login-card form {
+    margin-top: 1.5rem;
+}
+
+body.admin-shell .login-card .mb-3 {
+    margin-bottom: 1.25rem !important;
+}
+
+body.admin-shell .login-card .mb-4 {
+    margin-bottom: 1.75rem !important;
+}
+
+body.admin-shell .form-label {
+    margin-bottom: 0.6rem;
+    font-weight: 650;
+    color: #374151;
+}
+
+body.admin-shell .form-control,
+body.admin-shell .form-select,
+body.admin-shell .input-group-text {
+    border-color: #d8dee8;
+    background-color: #fff;
+    color: #111827;
+}
+
+body.admin-shell .form-control:focus,
+body.admin-shell .form-select:focus {
+    border-color: #2d7a7a;
+    box-shadow: 0 0 0 0.2rem rgba(45, 122, 122, 0.14);
+}
+
+body.admin-shell .btn {
+    border-radius: 0.75rem;
+}
+
+body.admin-shell .admin-dashboard > .d-flex:first-child {
+    gap: 1rem;
+    margin-bottom: 2rem !important;
+}
+
+body.admin-shell .admin-dashboard h1 {
+    color: #111827;
+    font-size: clamp(2rem, 4vw, 3rem);
+}
+
+body.admin-shell .nav-tabs {
+    gap: 0.35rem;
+    border-bottom: 1px solid #dfe5ef;
+}
+
+body.admin-shell .nav-tabs .nav-link {
+    border-radius: 0.75rem 0.75rem 0 0;
+}
+
+body.admin-shell .card {
+    border: 1px solid #e5e7eb;
+    border-radius: 1rem;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+}
+
+body.admin-shell .card-header {
+    background: #f8fafc;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+body.admin-shell .table {
+    color: #111827;
+}
+
+body.admin-shell .modal {
+    color: #111827;
+}
+
+@media (max-width: 640px) {
+    body.admin-shell .admin-dashboard,
+    body.admin-shell .admin-login {
+        width: min(100% - 1rem, 1280px);
+        padding: 1.5rem 0;
+    }
+
+    body.admin-shell .login-card .card-body {
+        padding: 1.5rem;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     .reveal-on-scroll {
         opacity: 1;

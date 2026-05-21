@@ -82,12 +82,12 @@ $activityWindows = [
                 <section class="rounded-[2rem] border border-gray-200/70 bg-white/80 p-6 shadow-xl shadow-gray-950/5 backdrop-blur" data-animate>
                     <h2 class="text-2xl font-bold text-gray-950"><?= htmlspecialchars($lang->get('stats.most_banned_players'), ENT_QUOTES, 'UTF-8') ?></h2>
                     <div class="mt-6 space-y-3">
-                        <?php $rank = 1; foreach ($stats['top_banned_players'] as $player): ?>
+                        <?php $rank = 1; foreach ($stats['top_banned_players'] as $player): $playerName = $player['player_name'] ?? 'Unknown'; $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($playerName); ?>
                         <div class="flex items-center gap-4 rounded-2xl bg-gray-50/80 p-4">
                             <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-950 text-sm font-bold text-white"><?= $rank++ ?></span>
-                            <img src="<?= htmlspecialchars($this->getAvatarUrl($player['uuid'], $player['player_name'] ?? 'Unknown'), ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($player['player_name'] ?? 'Unknown', ENT_QUOTES, 'UTF-8') ?>" class="h-11 w-11 rounded-2xl object-cover">
+                            <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" class="h-12 w-12 rounded-2xl object-contain" onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                             <div class="min-w-0 flex-1">
-                                <div class="truncate font-bold text-gray-950"><?= htmlspecialchars($player['player_name'] ?? 'Unknown', ENT_QUOTES, 'UTF-8') ?></div>
+                                <div class="truncate font-bold text-gray-950"><?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?></div>
                                 <div class="text-xs text-gray-500">Last: <?= htmlspecialchars($this->formatDate((int)$player['last_ban_time']), ENT_QUOTES, 'UTF-8') ?></div>
                             </div>
                             <span class="rounded-full bg-rose-50 px-3 py-1 text-xs font-bold text-rose-700"><?= (int)$player['ban_count'] ?> bans</span>

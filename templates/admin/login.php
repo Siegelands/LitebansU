@@ -138,17 +138,24 @@
 
 <style>
 .admin-login {
-    min-height: 60vh;
+    min-height: calc(100vh - 12rem);
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 3rem 0;
 }
 
 .login-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
     box-shadow: var(--shadow-xl);
-    border-radius: var(--radius-lg);
+    border-radius: 1.5rem;
+    max-width: 520px;
+    width: 100%;
+}
+
+.login-card .card-body {
+    padding: 2.5rem;
 }
 
 .login-icon {
@@ -166,8 +173,21 @@
 }
 
 .form-control-lg {
-    padding: 0.75rem 1rem;
+    padding: 0.95rem 1rem;
     font-size: 1rem;
+}
+
+.login-card .input-group {
+    margin-top: 0.35rem;
+}
+
+.login-card .form-check {
+    padding-top: 0.25rem;
+}
+
+.login-card .btn-lg {
+    padding-top: 0.9rem;
+    padding-bottom: 0.9rem;
 }
 
 #toggle-password {

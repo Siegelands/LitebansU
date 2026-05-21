@@ -6,7 +6,7 @@
     
     <div class="max-w-4xl mx-auto text-center" data-animate>
         <div class="mb-10 inline-flex rounded-[2rem] border border-white/10 bg-white/[0.06] px-8 py-6 shadow-2xl shadow-black/30 backdrop-blur-xl">
-            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-20 w-auto max-w-[430px] object-contain sm:h-24">
+            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-28 w-auto max-w-[560px] object-contain sm:h-32">
         </div>
         
         <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
@@ -244,12 +244,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             if ($banCount++ >= 5) break;
                             $playerName = $ban['player_name'] ?? $ban['name'] ?? 'Unknown';
                             $uuid = $ban['uuid'] ?? '';
+                            $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($playerName);
                         ?>
                         <a href="<?= htmlspecialchars(url('detail?type=ban&id=' . $ban['id']), ENT_QUOTES, 'UTF-8') ?>" class="group block p-4 rounded-lg hover:bg-gray-50 transition-colors">
                             <div class="flex items-center gap-4">
-                                <img src="<?= htmlspecialchars($controller->getAvatarUrl($uuid, $playerName), ENT_QUOTES, 'UTF-8') ?>" 
+                                <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" 
-                                     class="w-10 h-10 rounded-lg">
+                                     class="w-12 h-12 rounded-lg object-contain"
+                                     onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                                 <div class="flex-grow min-w-0">
                                     <div class="font-semibold text-gray-900 group-hover:text-gray-700 truncate">
                                         <?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>
@@ -309,12 +311,14 @@ document.addEventListener('DOMContentLoaded', function() {
                             if ($muteCount++ >= 5) break;
                             $playerName = $mute['player_name'] ?? $mute['name'] ?? 'Unknown';
                             $uuid = $mute['uuid'] ?? '';
+                            $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($playerName);
                         ?>
                         <a href="<?= htmlspecialchars(url('detail?type=mute&id=' . $mute['id']), ENT_QUOTES, 'UTF-8') ?>" class="group block p-4 rounded-lg hover:bg-gray-50 transition-colors">
                             <div class="flex items-center gap-4">
-                                <img src="<?= htmlspecialchars($controller->getAvatarUrl($uuid, $playerName), ENT_QUOTES, 'UTF-8') ?>" 
+                                <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" 
-                                     class="w-10 h-10 rounded-lg">
+                                     class="w-12 h-12 rounded-lg object-contain"
+                                     onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                                 <div class="flex-grow min-w-0">
                                     <div class="font-semibold text-gray-900 group-hover:text-gray-700 truncate">
                                         <?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>

@@ -63,6 +63,13 @@
     </footer>
     
     <!-- Scripts -->
+    <?php
+    $requestPath = parse_url($_SERVER['REQUEST_URI'] ?? '/', PHP_URL_PATH) ?: '/';
+    $isAdminPage = ($currentPage ?? '') === 'admin' || str_contains($requestPath, '/admin');
+    ?>
+    <?php if ($isAdminPage): ?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <?php endif; ?>
     <script src="<?= htmlspecialchars(asset('assets/js/main.js'), ENT_QUOTES, 'UTF-8') ?>"></script>
     
     <script>
