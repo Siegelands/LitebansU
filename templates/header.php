@@ -1,3 +1,7 @@
+<?php
+$isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
+    && (time() - ($_SESSION['admin_login_time'] ?? 0) <= 7200);
+?>
 <!DOCTYPE html>
 <html lang="<?= htmlspecialchars($config['site_lang'] ?? $lang->getCurrentLanguage(), ENT_QUOTES, 'UTF-8') ?>">
 <head>
@@ -272,25 +276,25 @@
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <a href="<?= htmlspecialchars($config['base_path'], ENT_QUOTES, 'UTF-8') ?>" class="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
+                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
                             <?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>
                         </a>
                     </div>
                     
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="<?= htmlspecialchars($config['base_path'], ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                             <?= htmlspecialchars($lang->get('nav.home') ?? 'Home', ENT_QUOTES, 'UTF-8') ?>
                         </a>
-                        <a href="<?= htmlspecialchars($config['base_path'] . 'punishments', ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                             <?= htmlspecialchars($lang->get('nav.punishments') ?? 'Punishments', ENT_QUOTES, 'UTF-8') ?>
                         </a>
-                        <a href="<?= htmlspecialchars($config['base_path'] . 'stats', ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                             <?= htmlspecialchars($lang->get('nav.statistics') ?? 'Statistics', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         
-                        <?php if (AuthManager::isAuthenticated()): ?>
-                        <a href="<?= htmlspecialchars($config['base_path'] . 'admin', ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <?php if ($isAdminAuthenticated): ?>
+                        <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
                             <?= htmlspecialchars($lang->get('nav.admin') ?? 'Admin', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         <?php endif; ?>
@@ -298,8 +302,8 @@
                     
                     <!-- Auth & Mobile Menu -->
                     <div class="flex items-center space-x-4">
-                        <?php if (!AuthManager::isAuthenticated()): ?>
-                        <a href="<?= htmlspecialchars($config['base_path'] . 'admin/login', ENT_QUOTES, 'UTF-8') ?>" class="hidden sm:inline-flex px-6 py-2 rounded-lg text-sm font-semibold text-white bg-gray-900 hover:bg-gray-800 transition-colors">
+                        <?php if (!$isAdminAuthenticated): ?>
+                        <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="hidden sm:inline-flex px-6 py-2 rounded-lg text-sm font-semibold text-white bg-gray-900 hover:bg-gray-800 transition-colors">
                             <?= htmlspecialchars($lang->get('nav.login') ?? 'Sign In', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         <?php else: ?>
@@ -309,10 +313,10 @@
                                 <span class="hidden sm:inline"><?= htmlspecialchars($lang->get('nav.menu') ?? 'Menu', ENT_QUOTES, 'UTF-8') ?></span>
                             </button>
                             <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-lg shadow-luxury-lg bg-white border border-gray-200">
-                                <a href="<?= htmlspecialchars($config['base_path'] . 'admin', ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 transition-colors first:rounded-t-lg">
+                                <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 transition-colors first:rounded-t-lg">
                                     <?= htmlspecialchars($lang->get('nav.admin_panel') ?? 'Admin Panel', ENT_QUOTES, 'UTF-8') ?>
                                 </a>
-                                <a href="<?= htmlspecialchars($config['base_path'] . 'admin/logout', ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-red-600 hover:bg-gray-50 transition-colors last:rounded-b-lg border-t border-gray-200">
+                                <a href="<?= htmlspecialchars(url('admin/logout'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-red-600 hover:bg-gray-50 transition-colors last:rounded-b-lg border-t border-gray-200">
                                     <?= htmlspecialchars($lang->get('nav.logout') ?? 'Sign Out', ENT_QUOTES, 'UTF-8') ?>
                                 </a>
                             </div>
@@ -332,17 +336,17 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 bg-white border-b border-gray-200 md:hidden z-40">
         <div class="px-4 py-4 space-y-2">
-            <a href="<?= htmlspecialchars($config['base_path'], ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.home') ?? 'Home', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="<?= htmlspecialchars($config['base_path'] . 'punishments', ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.punishments') ?? 'Punishments', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="<?= htmlspecialchars($config['base_path'] . 'stats', ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.statistics') ?? 'Statistics', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <?php if (!AuthManager::isAuthenticated()): ?>
-            <a href="<?= htmlspecialchars($config['base_path'] . 'admin/login', ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors sm:hidden">
+            <?php if (!$isAdminAuthenticated): ?>
+            <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors sm:hidden">
                 <?= htmlspecialchars($lang->get('nav.login') ?? 'Sign In', ENT_QUOTES, 'UTF-8') ?>
             </a>
             <?php endif; ?>

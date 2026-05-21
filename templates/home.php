@@ -20,7 +20,7 @@
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="<?= htmlspecialchars($config['base_path'] . 'punishments', ENT_QUOTES, 'UTF-8') ?>" class="px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
+            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
                 <i class="fas fa-list"></i>
                 <?= htmlspecialchars($lang->get('nav.punishments') ?? 'View Punishments', ENT_QUOTES, 'UTF-8') ?>
             </a>
@@ -198,7 +198,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         <!-- View More Button -->
         <div class="text-center">
-            <a href="<?= htmlspecialchars($config['base_path'] . 'stats', ENT_QUOTES, 'UTF-8') ?>" class="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
+            <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="inline-flex items-center gap-2 px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors">
                 <i class="fas fa-chart-line"></i>
                 <?= htmlspecialchars($lang->get('stats.view_detailed') ?? 'View Detailed Statistics', ENT_QUOTES, 'UTF-8') ?>
             </a>

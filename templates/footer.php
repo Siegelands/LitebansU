@@ -20,13 +20,13 @@
                         <?= htmlspecialchars($lang->get('footer.navigation') ?? 'Navigation', ENT_QUOTES, 'UTF-8') ?>
                     </h4>
                     <ul class="space-y-2">
-                        <li><a href="<?= htmlspecialchars($config['base_path'], ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                        <li><a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                             <?= htmlspecialchars($lang->get('nav.home') ?? 'Home', ENT_QUOTES, 'UTF-8') ?>
                         </a></li>
-                        <li><a href="<?= htmlspecialchars($config['base_path'] . 'punishments', ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                        <li><a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                             <?= htmlspecialchars($lang->get('nav.punishments') ?? 'Punishments', ENT_QUOTES, 'UTF-8') ?>
                         </a></li>
-                        <li><a href="<?= htmlspecialchars($config['base_path'] . 'stats', ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
+                        <li><a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="text-gray-600 hover:text-gray-900 transition-colors text-sm">
                             <?= htmlspecialchars($lang->get('nav.statistics') ?? 'Statistics', ENT_QUOTES, 'UTF-8') ?>
                         </a></li>
                     </ul>

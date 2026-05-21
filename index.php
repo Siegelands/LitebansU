@@ -388,6 +388,9 @@ try {
         (new HomeController($repository, $lang, $theme, $config))->index();
     } elseif ($requestUri === '/search') {
         (new HomeController($repository, $lang, $theme, $config))->search();
+    } elseif ($requestUri === '/punishments') {
+        header("Location: " . url('bans'), true, 302);
+        exit;
     } elseif ($requestUri === '/bans') {
         (new PunishmentsController($repository, $lang, $theme, $config))->bans();
     } elseif ($requestUri === '/mutes') {
