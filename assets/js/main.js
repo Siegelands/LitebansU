@@ -1,18 +1,422 @@
 /**
  * ============================================================================
- * LiteBansU
+ * LiteBansU - Modern Premium JavaScript
  * ============================================================================
- *
- * Plugin Name: LiteBansU
- * Description: A modern, secure, and responsive web interface for LiteBans punishment management system.
- * Version: 3.6
- * Market URI: https://builtbybit.com/resources/litebansu-litebans-website.69448/
- * Author URI: https://yamiru.com
- * License: MIT
- * License URI: https://opensource.org/licenses/MIT
- * ============================================================================
+ * Apple-inspired animations, interactions, and smooth UX with GSAP
  */
-class LiteBansUI {
+
+// Initialize GSAP and ScrollTrigger
+gsap.registerPlugin(ScrollTrigger);
+
+class LiteBansModern {
+    constructor() {
+        this.basePath = this.getBasePath();
+        this.csrfToken = this.getCsrfToken();
+        this.searchCache = new Map();
+        this.init();
+    }
+
+    init() {
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.initialize());
+        } else {
+            this.initialize();
+        }
+    }
+
+    getBasePath() {
+        const metaBasePath = document.querySelector('meta[name="base-path"]');
+        if (metaBasePath) {
+            let path = metaBasePath.getAttribute('content') || '';
+            return path.replace(/\/$/, '');
+        }
+        return '';
+    }
+
+    getCsrfToken() {
+        const meta = document.querySelector('meta[name="csrf-token"]');
+        return meta ? meta.getAttribute('content') : '';
+    }
+
+    initialize() {
+        // Setup core interactions
+        this.setupNavigation();
+        this.setupSearch();
+        this.setupScrollAnimations();
+        this.setupInteractions();
+        this.setupPageTransitions();
+        this.setupClickableRows();
+        
+        // Page-specific features
+        this.setupDetailPageFeatures();
+        this.setupTableInteractions();
+    }
+
+    // ========================================================================
+    // NAVIGATION
+    // ========================================================================
+    
+    setupNavigation() {
+        // Mobile menu
+        const mobileMenuBtn = document.querySelector('[onclick*="toggleMobileMenu"]');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        if (mobileMenu) {
+            // Close menu when a link is clicked
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+        }
+        
+        // Sticky navbar on scroll
+        const navbar = document.getElementById('navbar');
+        if (navbar) {
+            let lastScroll = 0;
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset;
+                
+                if (scrollTop > 100) {
+                    navbar.classList.add('shadow-luxury');
+                } else {
+                    navbar.classList.remove('shadow-luxury');
+                }
+                
+                lastScroll = scrollTop;
+            });
+        }
+    }
+
+    // ========================================================================
+    // SEARCH FUNCTIONALITY
+    // ========================================================================
+    
+    setupSearch() {
+        const searchForm = document.getElementById('search-form');
+        if (!searchForm) return;
+        
+        searchForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const searchInput = document.getElementById('search-input');
+            const resultsContainer = document.getElementById('search-results');
+            
+            if (!searchInput || !resultsContainer) return;
+            
+            const query = searchInput.value.trim();
+            if (query.length === 0) return;
+            
+            // Check cache
+            if (this.searchCache.has(query)) {
+                this.displaySearchResults(this.searchCache.get(query), resultsContainer);
+                return;
+            }
+            
+            // Show loading state
+            gsap.to(resultsContainer, { opacity: 0.5, duration: 0.2 });
+            resultsContainer.innerHTML = '<div class="text-center py-8"><i class="fas fa-spinner fa-spin text-2xl text-gray-400"></i></div>';
+            
+            try {
+                const response = await fetch(`${this.basePath}?search=${encodeURIComponent(query)}`, {
+                    method: 'GET',
+                    headers: {
+                        'X-Requested-With': 'XMLHttpRequest',
+                        'X-CSRF-Token': this.csrfToken
+                    }
+                });
+                
+                if (response.ok) {
+                    const html = await response.text();
+                    this.searchCache.set(query, html);
+                    this.displaySearchResults(html, resultsContainer);
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsContainer.innerHTML = '<div class="text-center py-8 text-red-600">Error performing search</div>';
+            }
+        });
+    }
+
+    displaySearchResults(html, container) {
+        gsap.to(container, {
+            opacity: 0,
+            duration: 0.2,
+            onComplete: () => {
+                container.innerHTML = html;
+                gsap.to(container, { opacity: 1, duration: 0.3 });
+            }
+        });
+    }
+
+    // ========================================================================
+    // SCROLL ANIMATIONS
+    // ========================================================================
+    
+    setupScrollAnimations() {
+        // Animate elements with data-animate attribute
+        const animatedElements = document.querySelectorAll('[data-animate]');
+        
+        animatedElements.forEach((element, index) => {
+            gsap.set(element, { opacity: 0, y: 30 });
+            
+            gsap.to(element, {
+                scrollTrigger: {
+                    trigger: element,
+                    start: 'top 80%',
+                    onEnter: () => {
+                        gsap.to(element, {
+                            opacity: 1,
+                            y: 0,
+                            duration: 0.6,
+                            ease: 'power2.out',
+                            delay: index * 0.1
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Parallax effect on hero section
+        const heroSection = document.querySelector('.hero-section');
+        if (heroSection) {
+            gsap.to(heroSection, {
+                scrollTrigger: {
+                    trigger: heroSection,
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: 1,
+                    markers: false
+                },
+                y: -50,
+                ease: 'none'
+            });
+        }
+        
+        // Stat cards stagger animation
+        const statCards = document.querySelectorAll('.stat-card');
+        if (statCards.length > 0) {
+            gsap.set(statCards, { opacity: 0, y: 30 });
+            gsap.to(statCards, {
+                scrollTrigger: {
+                    trigger: '.stat-card',
+                    start: 'top 80%'
+                },
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                stagger: 0.1,
+                ease: 'power2.out'
+            });
+        }
+    }
+
+    // ========================================================================
+    // INTERACTIVE ELEMENTS
+    // ========================================================================
+    
+    setupInteractions() {
+        // Button hover effects
+        document.querySelectorAll('button, a.btn, .btn-primary').forEach(button => {
+            button.addEventListener('mouseenter', () => {
+                gsap.to(button, { scale: 1.02, duration: 0.2, ease: 'power2.out', overwrite: 'auto' });
+            });
+            button.addEventListener('mouseleave', () => {
+                gsap.to(button, { scale: 1, duration: 0.2, ease: 'power2.out', overwrite: 'auto' });
+            });
+        });
+        
+        // Card hover effects
+        document.querySelectorAll('.card, .stat-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -4,
+                    boxShadow: '0 20px 40px rgba(0, 0, 0, 0.1)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.08)',
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            });
+        });
+        
+        // Input focus effects
+        document.querySelectorAll('input, textarea, select').forEach(input => {
+            input.addEventListener('focus', () => {
+                gsap.to(input, { boxShadow: '0 0 0 3px rgba(17, 24, 39, 0.1)', duration: 0.3 });
+            });
+            input.addEventListener('blur', () => {
+                gsap.to(input, { boxShadow: 'none', duration: 0.3 });
+            });
+        });
+        
+        // Smooth scroll anchors
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                const href = anchor.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        gsap.to(window, { scrollTo: target, duration: 0.8, ease: 'power2.inOut' });
+                    }
+                }
+            });
+        });
+    }
+
+    // ========================================================================
+    // PAGE TRANSITIONS
+    // ========================================================================
+    
+    setupPageTransitions() {
+        // Fade in on page load
+        window.addEventListener('load', () => {
+            gsap.to('body', { opacity: 1, duration: 0.5, ease: 'power2.out' });
+        });
+        
+        // Page exit animation
+        document.querySelectorAll('a:not([target="_blank"]):not([download])').forEach(link => {
+            link.addEventListener('click', (e) => {
+                if (link.href && !link.href.includes('#') && !link.href.includes('javascript:')) {
+                    if (link.href.includes(window.location.host)) {
+                        e.preventDefault();
+                        gsap.to('main', {
+                            opacity: 0,
+                            y: 20,
+                            duration: 0.4,
+                            ease: 'power2.in',
+                            onComplete: () => {
+                                window.location.href = link.href;
+                            }
+                        });
+                    }
+                }
+            });
+        });
+        
+        // Page entry animation
+        gsap.from('main', { opacity: 0, y: 20, duration: 0.5, ease: 'power2.out' });
+    }
+
+    // ========================================================================
+    // CLICKABLE ROWS
+    // ========================================================================
+    
+    setupClickableRows() {
+        document.querySelectorAll('[data-href]').forEach(row => {
+            row.addEventListener('click', (e) => {
+                if (e.target.closest('a')) return;
+                const href = row.getAttribute('data-href');
+                if (href) {
+                    gsap.to('main', {
+                        opacity: 0,
+                        y: 20,
+                        duration: 0.3,
+                        ease: 'power2.in',
+                        onComplete: () => {
+                            window.location.href = href;
+                        }
+                    });
+                }
+            });
+            
+            row.addEventListener('mouseenter', () => {
+                gsap.to(row, { backgroundColor: 'rgba(249, 250, 251, 0.5)', duration: 0.2 });
+            });
+            row.addEventListener('mouseleave', () => {
+                gsap.to(row, { backgroundColor: 'transparent', duration: 0.2 });
+            });
+        });
+    }
+
+    // ========================================================================
+    // DETAIL PAGE FEATURES
+    // ========================================================================
+    
+    setupDetailPageFeatures() {
+        // Copy to clipboard functionality
+        document.querySelectorAll('[data-copy]').forEach(element => {
+            element.addEventListener('click', () => {
+                const text = element.getAttribute('data-copy');
+                navigator.clipboard.writeText(text).then(() => {
+                    const originalText = element.innerHTML;
+                    element.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                    setTimeout(() => {
+                        element.innerHTML = originalText;
+                    }, 2000);
+                });
+            });
+        });
+    }
+
+    // ========================================================================
+    // TABLE INTERACTIONS
+    // ========================================================================
+    
+    setupTableInteractions() {
+        // Table row hover effects
+        document.querySelectorAll('table tbody tr').forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                gsap.to(row, { backgroundColor: 'rgba(249, 250, 251, 0.5)', duration: 0.2 });
+            });
+            row.addEventListener('mouseleave', () => {
+                gsap.to(row, { backgroundColor: 'transparent', duration: 0.2 });
+            });
+        });
+    }
+}
+
+// ============================================================================
+// INITIALIZATION
+// ============================================================================
+
+const liteBansModern = new LiteBansModern();
+
+// ============================================================================
+// UTILITY FUNCTIONS
+// ============================================================================
+
+/**
+ * Format a number with commas
+ */
+function formatNumber(num) {
+    return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+
+/**
+ * Format a date to readable string
+ */
+function formatDate(dateString) {
+    const options = {
+        year: 'numeric',
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit'
+    };
+    return new Date(dateString).toLocaleDateString('en-US', options);
+}
+
+/**
+ * Debounce function
+ */
+function debounce(func, wait) {
+    let timeout;
+    return function(...args) {
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func(...args), wait);
+    };
+}
+
+console.log('LiteBans Modern JavaScript loaded successfully');
+
     constructor() {
         this.basePath = this.getBasePath();
         this.csrfToken = this.getCsrfToken();
