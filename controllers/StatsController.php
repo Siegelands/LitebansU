@@ -41,13 +41,16 @@ class StatsController extends BaseController
     
     public function clearCache(): void
     {
-        // Check if request is from admin or authorized user
-        $isAdmin = false;
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        if (isset($_SESSION['admin_authenticated']) && $_SESSION['admin_authenticated'] === true) {
-            $isAdmin = true;
+
+        $isAdmin = !empty($_SESSION['admin_authenticated'])
+            && (time() - ($_SESSION['admin_login_time'] ?? 0) <= 7200);
+
+        if (!$isAdmin) {
+            $this->jsonResponse(['success' => false, 'message' => 'Admin authentication required'], 403);
+            return;
         }
         
         // Verify CSRF token
@@ -60,16 +63,7 @@ class StatsController extends BaseController
             $this->jsonResponse(['success' => false, 'message' => 'Invalid CSRF token'], 400);
             return;
         }
-        
-        // Rate limiting only for non-admin users
-        if (!$isAdmin) {
-            $clientIp = SecurityManager::getClientIp();
-            if (!SecurityManager::rateLimitCheck('cache_clear_' . $clientIp, 5, 300)) {
-                $this->jsonResponse(['success' => false, 'message' => 'Too many cache clear requests. Please wait.'], 429);
-                return;
-            }
-        }
-        
+
         try {
             $clearAll = isset($_POST['clear_all']) && $_POST['clear_all'] === '1';
             

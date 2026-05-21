@@ -90,7 +90,7 @@ $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($punishment['
                     <div class="absolute -inset-6 rounded-[2.5rem] bg-gradient-to-br <?= htmlspecialchars($typeMeta['accent'], ENT_QUOTES, 'UTF-8') ?> opacity-10 blur-3xl"></div>
                     <div class="relative overflow-hidden rounded-[2rem] border border-white/70 bg-white/75 p-8 shadow-2xl shadow-gray-950/10 backdrop-blur-2xl">
                         <div class="flex flex-col items-center gap-6 sm:flex-row">
-                            <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($punishment['name'], ENT_QUOTES, 'UTF-8') ?>" class="h-36 w-36 rounded-3xl object-contain shadow-xl shadow-gray-950/15" onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
+                            <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($punishment['name'], ENT_QUOTES, 'UTF-8') ?>" class="h-36 w-36 rounded-3xl object-contain shadow-xl shadow-gray-950/15" decoding="async" onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                             <div class="min-w-0 text-center sm:text-left">
                                 <div class="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br <?= htmlspecialchars($typeMeta['accent'], ENT_QUOTES, 'UTF-8') ?> text-white shadow-lg">
                                     <i class="fas <?= htmlspecialchars($typeMeta['icon'], ENT_QUOTES, 'UTF-8') ?>"></i>

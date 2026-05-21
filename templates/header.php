@@ -58,6 +58,7 @@ $isAdminPage = ($currentPage ?? '') === 'admin' || str_contains($requestPath, '/
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="preconnect" href="https://visage.surgeplay.com">
     
     <!-- TailwindCSS -->
     <script src="https://cdn.tailwindcss.com"></script>

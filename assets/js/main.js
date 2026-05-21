@@ -25,7 +25,6 @@ class LiteBansUI {
         this.setupClickableRows();
         this.setupPunishmentRowClicks();
         this.setupDetailPageFeatures();
-        this.setupClearCache();
         this.setupBackButton();
     }
 
@@ -48,47 +47,18 @@ class LiteBansUI {
             });
         }
 
-        const navbar = document.getElementById('navbar');
-        if (!navbar) return;
-
-        let ticking = false;
-        const updateNavbar = () => {
-            navbar.classList.toggle('shadow-luxury', window.scrollY > 80);
-            ticking = false;
-        };
-
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
-                window.requestAnimationFrame(updateNavbar);
-                ticking = true;
+        document.addEventListener('click', (event) => {
+            const userMenu = document.getElementById('user-menu');
+            if (userMenu && !userMenu.contains(event.target)) {
+                document.getElementById('user-menu-dropdown')?.classList.add('hidden');
             }
-        }, { passive: true });
+        });
     }
 
     setupRevealAnimations() {
         const elements = Array.from(document.querySelectorAll('[data-animate]'));
         if (!elements.length) return;
-
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || !('IntersectionObserver' in window)) {
-            elements.forEach((element) => element.classList.add('is-visible'));
-            return;
-        }
-
-        elements.forEach((element) => element.classList.add('reveal-on-scroll'));
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, {
-            rootMargin: '0px 0px -8% 0px',
-            threshold: 0.08
-        });
-
-        elements.forEach((element) => observer.observe(element));
+        elements.forEach((element) => element.classList.add('is-visible'));
     }
 
     setupSearch() {
@@ -252,53 +222,6 @@ class LiteBansUI {
             element.style.cursor = 'pointer';
             element.title = 'Copy UUID';
             element.addEventListener('click', () => this.copyToClipboard(text));
-        });
-    }
-
-    setupClearCache() {
-        const clearCacheBtn = document.getElementById('clear-cache-btn');
-        const confirmBtn = document.getElementById('confirm-clear-cache');
-        const modal = document.getElementById('cacheModal');
-        if (!clearCacheBtn || !confirmBtn || !modal) return;
-
-        const showModal = () => {
-            modal.classList.remove('hidden');
-            modal.classList.add('flex');
-        };
-
-        const hideModal = () => {
-            modal.classList.add('hidden');
-            modal.classList.remove('flex');
-        };
-
-        clearCacheBtn.addEventListener('click', showModal);
-        modal.querySelectorAll('[data-modal-close]').forEach((button) => button.addEventListener('click', hideModal));
-        modal.addEventListener('click', (event) => {
-            if (event.target === modal) hideModal();
-        });
-
-        confirmBtn.addEventListener('click', async () => {
-            try {
-                const formData = new FormData();
-                formData.append('csrf_token', this.csrfToken);
-
-                const response = await fetch(`${this.basePath}/stats/clear-cache`, {
-                    method: 'POST',
-                    body: formData
-                });
-                const data = await response.json();
-
-                if (!data.success) {
-                    throw new Error(data.message || 'Failed to clear cache');
-                }
-
-                hideModal();
-                this.showNotification('success', data.message || 'Cache cleared successfully');
-                setTimeout(() => location.reload(), 1000);
-            } catch (error) {
-                hideModal();
-                this.showNotification('error', error.message || 'Failed to clear cache');
-            }
         });
     }
 

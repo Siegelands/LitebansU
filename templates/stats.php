@@ -24,12 +24,6 @@ $activityWindows = [
             <p class="mx-auto mt-6 max-w-2xl text-lg leading-8 text-gray-600">
                 <?= htmlspecialchars($lang->get('stats.overview'), ENT_QUOTES, 'UTF-8') ?>
             </p>
-            <div class="mt-9 flex justify-center">
-                <button id="clear-cache-btn" type="button" class="inline-flex items-center gap-2 rounded-full bg-gray-950 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-gray-950/10 transition hover:bg-gray-800 hover:scale-[1.02]">
-                    <i class="fas fa-sync-alt text-xs"></i>
-                    <?= htmlspecialchars($lang->get('stats.clear_cache'), ENT_QUOTES, 'UTF-8') ?>
-                </button>
-            </div>
         </div>
     </section>
 
@@ -85,7 +79,7 @@ $activityWindows = [
                         <?php $rank = 1; foreach ($stats['top_banned_players'] as $player): $playerName = $player['player_name'] ?? 'Unknown'; $skinUrl = 'https://visage.surgeplay.com/bust/128/' . rawurlencode($playerName); ?>
                         <div class="flex items-center gap-4 rounded-2xl bg-gray-50/80 p-4">
                             <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-gray-950 text-sm font-bold text-white"><?= $rank++ ?></span>
-                            <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" class="h-12 w-12 rounded-2xl object-contain" onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
+                            <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" class="h-12 w-12 rounded-2xl object-contain" loading="lazy" decoding="async" onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                             <div class="min-w-0 flex-1">
                                 <div class="truncate font-bold text-gray-950"><?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?></div>
                                 <div class="text-xs text-gray-500">Last: <?= htmlspecialchars($this->formatDate((int)$player['last_ban_time']), ENT_QUOTES, 'UTF-8') ?></div>
@@ -149,14 +143,4 @@ $activityWindows = [
         </div>
     </section>
 
-    <div id="cacheModal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-gray-950/40 p-4 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="cacheModalLabel">
-        <div class="w-full max-w-md rounded-[2rem] bg-white p-6 shadow-2xl shadow-gray-950/20">
-            <h2 id="cacheModalLabel" class="text-2xl font-bold text-gray-950">Clear Statistics Cache</h2>
-            <p class="mt-3 text-sm leading-6 text-gray-600">This refreshes cached statistics data. The page will reload after the cache clears.</p>
-            <div class="mt-6 flex justify-end gap-3">
-                <button type="button" data-modal-close class="rounded-full bg-gray-100 px-5 py-2.5 text-sm font-semibold text-gray-700 transition hover:bg-gray-200">Cancel</button>
-                <button type="button" id="confirm-clear-cache" class="rounded-full bg-gray-950 px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-gray-800">Clear Cache</button>
-            </div>
-        </div>
-    </div>
 </div>

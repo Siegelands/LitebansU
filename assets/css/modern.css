@@ -81,7 +81,7 @@ section.py-24 {
     border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: 1.5rem;
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px);
+    backdrop-filter: none;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
     transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -175,7 +175,7 @@ section.py-24 {
     border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: 1.5rem;
     padding: 2.5rem;
-    backdrop-filter: blur(20px);
+    backdrop-filter: none;
 }
 
 .form-control,
@@ -211,7 +211,7 @@ section.py-24 {
     border: 1px solid rgba(229, 231, 235, 0.5);
     border-radius: 1.5rem;
     padding: 2rem;
-    backdrop-filter: blur(8px);
+    backdrop-filter: none;
     transition: transform 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
     text-align: center;
 }
@@ -251,7 +251,7 @@ section.py-24 {
     overflow: hidden;
     border: 1px solid rgba(229, 231, 235, 0.5);
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(20px);
+    backdrop-filter: none;
 }
 
 .table {
@@ -596,14 +596,16 @@ body.siegelands-dark .to-gray-50 {
 body.siegelands-dark .card,
 body.siegelands-dark .stat-card,
 body.siegelands-dark .search-container,
+body.siegelands-dark .table-container,
 body.siegelands-dark .bg-white,
+body.siegelands-dark .bg-white\/70,
 body.siegelands-dark .bg-white\/75,
 body.siegelands-dark .bg-white\/80,
 body.siegelands-dark .bg-white\/85 {
     background: rgba(15, 23, 42, 0.72) !important;
     border-color: rgba(255, 255, 255, 0.1) !important;
-    box-shadow: 0 14px 34px rgba(0, 0, 0, 0.24) !important;
-    backdrop-filter: blur(8px) !important;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18) !important;
+    backdrop-filter: none !important;
 }
 
 body.siegelands-dark .bg-gray-50,
@@ -717,25 +719,42 @@ body.siegelands-dark .backdrop-blur-sm,
 body.siegelands-dark .backdrop-blur-md,
 body.siegelands-dark .backdrop-blur-xl,
 body.siegelands-dark .backdrop-blur-2xl {
-    backdrop-filter: blur(6px) !important;
+    backdrop-filter: none !important;
+}
+
+body.siegelands-dark .blur-3xl {
+    filter: none !important;
 }
 
 body.siegelands-dark .shadow-2xl,
 body.siegelands-dark .shadow-xl {
-    --tw-shadow: 0 14px 34px rgba(0, 0, 0, 0.25) !important;
-    --tw-shadow-colored: 0 14px 34px var(--tw-shadow-color) !important;
+    --tw-shadow: 0 8px 22px rgba(0, 0, 0, 0.18) !important;
+    --tw-shadow-colored: 0 8px 22px var(--tw-shadow-color) !important;
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow) !important;
 }
 
 .reveal-on-scroll {
-    opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.32s ease, transform 0.32s ease;
+    opacity: 1;
+    transform: none;
+    transition: none;
 }
 
 .reveal-on-scroll.is-visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
+}
+
+body.siegelands-dark .card:hover,
+body.siegelands-dark .stat-card:hover,
+body.siegelands-dark [class*="hover:-translate"]:hover,
+body.siegelands-dark [class*="hover:scale"]:hover {
+    transform: none !important;
+}
+
+body.siegelands-dark .transition,
+body.siegelands-dark .transition-all,
+body.siegelands-dark .transition-colors {
+    transition-duration: 120ms !important;
 }
 
 body.admin-shell {

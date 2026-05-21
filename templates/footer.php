@@ -72,27 +72,5 @@
     <?php endif; ?>
     <script src="<?= htmlspecialchars(asset('assets/js/main.js'), ENT_QUOTES, 'UTF-8') ?>"></script>
     
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-        
-        // User menu toggle
-        function toggleUserMenu() {
-            const dropdown = document.getElementById('user-menu-dropdown');
-            dropdown.classList.toggle('hidden');
-        }
-        
-        // Close user menu when clicking outside
-        document.addEventListener('click', function(e) {
-            const userMenu = document.getElementById('user-menu');
-            if (userMenu && !userMenu.contains(e.target)) {
-                document.getElementById('user-menu-dropdown').classList.add('hidden');
-            }
-        });
-        
-    </script>
 </body>
 </html>

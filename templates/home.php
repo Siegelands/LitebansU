@@ -251,6 +251,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" 
                                      class="w-12 h-12 rounded-lg object-contain"
+                                     loading="lazy"
+                                     decoding="async"
                                      onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                                 <div class="flex-grow min-w-0">
                                     <div class="font-semibold text-gray-900 group-hover:text-gray-700 truncate">
@@ -318,6 +320,8 @@ document.addEventListener('DOMContentLoaded', function() {
                                 <img src="<?= htmlspecialchars($skinUrl, ENT_QUOTES, 'UTF-8') ?>" 
                                      alt="<?= htmlspecialchars($playerName, ENT_QUOTES, 'UTF-8') ?>" 
                                      class="w-12 h-12 rounded-lg object-contain"
+                                     loading="lazy"
+                                     decoding="async"
                                      onerror="this.onerror=null;this.src='https://visage.surgeplay.com/bust/128/MHF_Steve';">
                                 <div class="flex-grow min-w-0">
                                     <div class="font-semibold text-gray-900 group-hover:text-gray-700 truncate">
