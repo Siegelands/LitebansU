@@ -1,3 +1,4 @@
+    <div class="w-full">
 <!-- Hero Section -->
 <section class="hero-section relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
     <!-- Background gradient -->
@@ -352,3 +353,4 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </div>
 </section>
+    </div>

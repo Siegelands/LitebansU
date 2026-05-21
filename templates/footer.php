@@ -1,4 +1,4 @@
-</div>    </main>
+    </main>
     
     <!-- Footer -->
     <footer class="mt-20 border-t border-gray-200 bg-luxury-50">
