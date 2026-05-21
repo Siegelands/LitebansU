@@ -2,29 +2,27 @@
 <!-- Hero Section -->
 <section class="hero-section relative min-h-screen flex items-center justify-center px-4 overflow-hidden">
     <!-- Background gradient -->
-    <div class="absolute inset-0 bg-gradient-to-br from-white via-gray-50 to-white -z-10"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,#1a2133_0%,#090d16_44%,#02040a_100%)] -z-10"></div>
     
     <div class="max-w-4xl mx-auto text-center" data-animate>
-        <div class="mb-6 inline-block">
-            <div class="w-16 h-16 bg-gradient-to-br from-gray-900 to-gray-700 rounded-full flex items-center justify-center shadow-luxury">
-                <i class="fas fa-shield-alt text-white text-2xl"></i>
-            </div>
+        <div class="mb-8 inline-flex rounded-[1.75rem] border border-white/10 bg-white/[0.06] px-7 py-5 shadow-2xl shadow-black/30 backdrop-blur-xl">
+            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-12 w-auto max-w-[260px] object-contain">
         </div>
         
-        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-gray-900 mb-6 leading-tight">
+        <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
             <?= htmlspecialchars($lang->get('home.welcome'), ENT_QUOTES, 'UTF-8') ?>
         </h1>
         
-        <p class="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mx-auto mb-12">
+        <p class="text-xl md:text-2xl text-slate-300 leading-relaxed max-w-2xl mx-auto mb-12">
             <?= htmlspecialchars($lang->get('home.description'), ENT_QUOTES, 'UTF-8') ?>
         </p>
         
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="px-8 py-3 bg-gray-900 text-white rounded-lg font-semibold hover:bg-gray-800 transition-colors inline-flex items-center gap-2">
+            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="px-8 py-3 bg-slate-100 text-slate-950 rounded-full font-semibold hover:bg-slate-200 transition-colors inline-flex items-center gap-2 shadow-xl shadow-white/10">
                 <i class="fas fa-list"></i>
                 <?= htmlspecialchars($lang->get('nav.punishments') ?? 'View Punishments', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="#search-section" class="px-8 py-3 bg-white text-gray-900 border border-gray-200 rounded-lg font-semibold hover:bg-gray-50 transition-colors inline-flex items-center gap-2">
+            <a href="#search-section" class="px-8 py-3 bg-white/10 text-white border border-white/10 rounded-full font-semibold hover:bg-white/15 transition-colors inline-flex items-center gap-2 backdrop-blur">
                 <i class="fas fa-search"></i>
                 <?= htmlspecialchars($lang->get('search.title') ?? 'Search', ENT_QUOTES, 'UTF-8') ?>
             </a>

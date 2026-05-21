@@ -558,6 +558,157 @@ section.py-24 {
 /* ============================================================================
    DARK MODE SUPPORT (Optional)
    ============================================================================ */
-@media (prefers-color-scheme: dark) {
-    /* Add dark mode styles here if needed */
+body.siegelands-dark {
+    background:
+        radial-gradient(circle at 50% -10%, rgba(56, 73, 112, 0.45), transparent 34rem),
+        linear-gradient(180deg, #070a12 0%, #02040a 100%);
+    color: #e5e7eb;
+}
+
+body.siegelands-dark main {
+    background:
+        radial-gradient(circle at top, rgba(35, 45, 70, 0.6), transparent 42rem),
+        #02040a;
+}
+
+body.siegelands-dark main > div.min-h-screen,
+body.siegelands-dark .hero-section {
+    background:
+        radial-gradient(circle at top, #1a2133 0%, #090d16 42%, #02040a 100%) !important;
+}
+
+body.siegelands-dark .from-white,
+body.siegelands-dark .from-gray-50 {
+    --tw-gradient-from: #090d16 var(--tw-gradient-from-position) !important;
+    --tw-gradient-to: rgba(9, 13, 22, 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to) !important;
+}
+
+body.siegelands-dark .via-white,
+body.siegelands-dark .via-gray-50 {
+    --tw-gradient-to: rgba(2, 4, 10, 0) var(--tw-gradient-to-position) !important;
+    --tw-gradient-stops: var(--tw-gradient-from), #05070d var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+}
+
+body.siegelands-dark .to-white,
+body.siegelands-dark .to-gray-50 {
+    --tw-gradient-to: #02040a var(--tw-gradient-to-position) !important;
+}
+
+body.siegelands-dark .card,
+body.siegelands-dark .stat-card,
+body.siegelands-dark .search-container,
+body.siegelands-dark .bg-white,
+body.siegelands-dark .bg-white\/75,
+body.siegelands-dark .bg-white\/80,
+body.siegelands-dark .bg-white\/85 {
+    background: rgba(15, 23, 42, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, 0.32) !important;
+}
+
+body.siegelands-dark .bg-gray-50,
+body.siegelands-dark .bg-gray-50\/80,
+body.siegelands-dark .bg-gray-100 {
+    background: rgba(255, 255, 255, 0.06) !important;
+}
+
+body.siegelands-dark .bg-rose-50,
+body.siegelands-dark .bg-red-100 {
+    background: rgba(244, 63, 94, 0.14) !important;
+}
+
+body.siegelands-dark .bg-amber-50,
+body.siegelands-dark .bg-amber-100 {
+    background: rgba(245, 158, 11, 0.14) !important;
+}
+
+body.siegelands-dark .bg-sky-50,
+body.siegelands-dark .bg-blue-100 {
+    background: rgba(14, 165, 233, 0.14) !important;
+}
+
+body.siegelands-dark .bg-purple-100 {
+    background: rgba(168, 85, 247, 0.14) !important;
+}
+
+body.siegelands-dark .text-gray-950,
+body.siegelands-dark .text-gray-900,
+body.siegelands-dark .text-gray-800,
+body.siegelands-dark .text-gray-700,
+body.siegelands-dark .stat-number,
+body.siegelands-dark h1,
+body.siegelands-dark h2,
+body.siegelands-dark h3,
+body.siegelands-dark h4 {
+    color: #f8fafc !important;
+}
+
+body.siegelands-dark .text-gray-600,
+body.siegelands-dark .text-gray-500,
+body.siegelands-dark .text-muted,
+body.siegelands-dark .stat-label {
+    color: #94a3b8 !important;
+}
+
+body.siegelands-dark .text-gray-400 {
+    color: #64748b !important;
+}
+
+body.siegelands-dark .border-gray-100,
+body.siegelands-dark .border-gray-200,
+body.siegelands-dark .border-gray-200\/50,
+body.siegelands-dark .border-gray-200\/70,
+body.siegelands-dark .border-white\/70 {
+    border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+body.siegelands-dark input,
+body.siegelands-dark textarea,
+body.siegelands-dark select,
+body.siegelands-dark .form-control {
+    background: rgba(2, 6, 23, 0.72) !important;
+    border-color: rgba(255, 255, 255, 0.12) !important;
+    color: #f8fafc !important;
+}
+
+body.siegelands-dark input::placeholder,
+body.siegelands-dark textarea::placeholder {
+    color: #64748b !important;
+}
+
+body.siegelands-dark input:focus,
+body.siegelands-dark textarea:focus,
+body.siegelands-dark select:focus {
+    border-color: rgba(255, 255, 255, 0.5) !important;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.08) !important;
+}
+
+body.siegelands-dark a.bg-gray-950,
+body.siegelands-dark button.bg-gray-950,
+body.siegelands-dark .bg-gray-950 {
+    background: #f8fafc !important;
+    color: #02040a !important;
+}
+
+body.siegelands-dark a.bg-gray-950:hover,
+body.siegelands-dark button.bg-gray-950:hover {
+    background: #dbe4ef !important;
+}
+
+body.siegelands-dark .hover\:bg-gray-50\/80:hover,
+body.siegelands-dark .hover\:bg-gray-50:hover,
+body.siegelands-dark .hover\:bg-gray-100:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+}
+
+body.siegelands-dark .shadow-gray-950\/5,
+body.siegelands-dark .shadow-gray-950\/10,
+body.siegelands-dark .shadow-gray-950\/15,
+body.siegelands-dark .shadow-gray-950\/20 {
+    --tw-shadow-color: rgba(0, 0, 0, 0.45) !important;
+}
+
+body.siegelands-dark footer {
+    margin-top: 0;
 }

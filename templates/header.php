@@ -102,7 +102,7 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     <link href="<?= htmlspecialchars(asset('assets/css/modern.css'), ENT_QUOTES, 'UTF-8') ?>" rel="stylesheet">
     
     <!-- PWA Meta Tags -->
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#05070d">
     
     <!-- Additional SEO Meta Tags -->
     <?php if (isset($config['site_keywords']) && !empty($config['site_keywords'])): ?>
@@ -268,33 +268,33 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     </script>
     <?php endif; ?>
 </head>
-<body class="bg-white text-gray-900 font-display antialiased">
+<body class="siegelands-dark bg-[#05070d] text-slate-100 font-display antialiased">
     <!-- Sticky Navigation Bar with Glassmorphism -->
     <nav class="fixed top-0 left-0 right-0 z-50 transition-all duration-300" id="navbar">
-        <div class="backdrop-blur-md bg-white/70 border-b border-gray-200/50">
+        <div class="backdrop-blur-xl bg-[#05070d]/75 border-b border-white/10 shadow-2xl shadow-black/20">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="flex justify-between items-center h-16">
                     <!-- Logo -->
                     <div class="flex items-center">
-                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
-                            <?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>
+                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
+                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-8 w-auto max-w-[170px] object-contain">
                         </a>
                     </div>
                     
                     <!-- Desktop Navigation -->
                     <div class="hidden md:flex items-center space-x-8">
-                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-slate-200 hover:text-white transition-colors">
                             <?= htmlspecialchars($lang->get('nav.home') ?? 'Home', ENT_QUOTES, 'UTF-8') ?>
                         </a>
-                        <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-slate-200 hover:text-white transition-colors">
                             <?= htmlspecialchars($lang->get('nav.punishments') ?? 'Punishments', ENT_QUOTES, 'UTF-8') ?>
                         </a>
-                        <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-slate-200 hover:text-white transition-colors">
                             <?= htmlspecialchars($lang->get('nav.statistics') ?? 'Statistics', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         
                         <?php if ($isAdminAuthenticated): ?>
-                        <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-gray-900 hover:text-gray-600 transition-colors">
+                        <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="text-sm font-medium text-slate-200 hover:text-white transition-colors">
                             <?= htmlspecialchars($lang->get('nav.admin') ?? 'Admin', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         <?php endif; ?>
@@ -303,20 +303,20 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
                     <!-- Auth & Mobile Menu -->
                     <div class="flex items-center space-x-4">
                         <?php if (!$isAdminAuthenticated): ?>
-                        <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="hidden sm:inline-flex px-6 py-2 rounded-lg text-sm font-semibold text-white bg-gray-900 hover:bg-gray-800 transition-colors">
+                        <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="hidden sm:inline-flex px-6 py-2 rounded-full text-sm font-semibold text-slate-950 bg-slate-100 hover:bg-slate-200 transition-colors shadow-lg shadow-white/10">
                             <?= htmlspecialchars($lang->get('nav.login') ?? 'Sign In', ENT_QUOTES, 'UTF-8') ?>
                         </a>
                         <?php else: ?>
                         <div class="relative" id="user-menu">
-                            <button onclick="toggleUserMenu()" class="px-6 py-2 rounded-lg text-sm font-semibold text-white bg-gray-900 hover:bg-gray-800 transition-colors flex items-center gap-2">
+                            <button onclick="toggleUserMenu()" class="px-6 py-2 rounded-full text-sm font-semibold text-slate-950 bg-slate-100 hover:bg-slate-200 transition-colors flex items-center gap-2">
                                 <i class="fas fa-user text-sm"></i>
                                 <span class="hidden sm:inline"><?= htmlspecialchars($lang->get('nav.menu') ?? 'Menu', ENT_QUOTES, 'UTF-8') ?></span>
                             </button>
-                            <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-lg shadow-luxury-lg bg-white border border-gray-200">
-                                <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-gray-900 hover:bg-gray-50 transition-colors first:rounded-t-lg">
+                            <div id="user-menu-dropdown" class="hidden absolute right-0 mt-2 w-48 rounded-2xl shadow-2xl shadow-black/30 bg-[#0d111a]/95 border border-white/10 backdrop-blur-xl">
+                                <a href="<?= htmlspecialchars(url('admin'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-slate-100 hover:bg-white/10 transition-colors first:rounded-t-2xl">
                                     <?= htmlspecialchars($lang->get('nav.admin_panel') ?? 'Admin Panel', ENT_QUOTES, 'UTF-8') ?>
                                 </a>
-                                <a href="<?= htmlspecialchars(url('admin/logout'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-red-600 hover:bg-gray-50 transition-colors last:rounded-b-lg border-t border-gray-200">
+                                <a href="<?= htmlspecialchars(url('admin/logout'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-3 text-sm text-rose-300 hover:bg-white/10 transition-colors last:rounded-b-2xl border-t border-white/10">
                                     <?= htmlspecialchars($lang->get('nav.logout') ?? 'Sign Out', ENT_QUOTES, 'UTF-8') ?>
                                 </a>
                             </div>
@@ -324,7 +324,7 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
                         <?php endif; ?>
                         
                         <!-- Mobile Menu Button -->
-                        <button onclick="toggleMobileMenu()" class="md:hidden text-gray-900 hover:text-gray-600 transition-colors">
+                        <button onclick="toggleMobileMenu()" class="md:hidden text-slate-100 hover:text-white transition-colors">
                             <i class="fas fa-bars text-xl"></i>
                         </button>
                     </div>
@@ -334,19 +334,19 @@ $isAdminAuthenticated = !empty($_SESSION['admin_authenticated'])
     </nav>
     
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 bg-white border-b border-gray-200 md:hidden z-40">
+    <div id="mobile-menu" class="hidden fixed top-16 left-0 right-0 bg-[#05070d]/95 border-b border-white/10 backdrop-blur-xl md:hidden z-40">
         <div class="px-4 py-4 space-y-2">
-            <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-slate-100 hover:bg-white/10 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.home') ?? 'Home', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url('bans'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-slate-100 hover:bg-white/10 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.punishments') ?? 'Punishments', ENT_QUOTES, 'UTF-8') ?>
             </a>
-            <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors">
+            <a href="<?= htmlspecialchars(url('stats'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-slate-100 hover:bg-white/10 transition-colors">
                 <?= htmlspecialchars($lang->get('nav.statistics') ?? 'Statistics', ENT_QUOTES, 'UTF-8') ?>
             </a>
             <?php if (!$isAdminAuthenticated): ?>
-            <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-gray-900 hover:bg-gray-100 transition-colors sm:hidden">
+            <a href="<?= htmlspecialchars(url('admin/login'), ENT_QUOTES, 'UTF-8') ?>" class="block px-4 py-2 rounded-lg text-slate-100 hover:bg-white/10 transition-colors sm:hidden">
                 <?= htmlspecialchars($lang->get('nav.login') ?? 'Sign In', ENT_QUOTES, 'UTF-8') ?>
             </a>
             <?php endif; ?>
