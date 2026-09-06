@@ -280,7 +280,7 @@ $isAdminPage = ($currentPage ?? '') === 'admin' || str_contains($requestPath, '/
                     <!-- Logo -->
                     <div class="flex items-center">
                         <a href="<?= htmlspecialchars(url(), ENT_QUOTES, 'UTF-8') ?>" class="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-14 w-auto max-w-[340px] object-contain sm:h-16">
+                            <img src="https://www.siegelands.org/assets/images/wordmark.webp" alt="<?= htmlspecialchars($config['site_name'], ENT_QUOTES, 'UTF-8') ?>" class="h-14 w-auto max-w-[340px] object-contain sm:h-16">
                         </a>
                     </div>
                     

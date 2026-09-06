@@ -6,7 +6,7 @@
     
     <div class="max-w-4xl mx-auto text-center" data-animate>
         <div class="mb-12 flex justify-center">
-            <img src="https://www.siegelands.org/assets/images/wordmark.png" alt="Siegelands" class="h-36 w-auto max-w-[760px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,0.35)] sm:h-44 lg:h-52">
+            <img src="https://www.siegelands.org/assets/images/wordmark.webp" alt="Siegelands" class="h-36 w-auto max-w-[760px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,0.35)] sm:h-44 lg:h-52">
         </div>
         
         <h1 class="text-5xl md:text-6xl font-bold tracking-tight text-white mb-6 leading-tight">
